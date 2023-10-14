@@ -21,16 +21,34 @@ def send_email(body: EmailBody) -> dict[str, str]:
 
 def get_all_insurance_packages() -> list[InsurancePackage]:
     vehicle_insurace = InsurancePackage(
-        name="Kfz-Versicherung",
-        price=0,  # FIXME
-        description="",  # FIXME
+        name="KFZ",
+        price=7,
+        description="""
+Leistungen:
+    - Abdeckung von Fahrzeugunfälle
+    - Schutz vor Diebstahl und Schäden des KFZ
+    - Unfälle und Pannenhilfe unterstützen
+
+Eine KFZ-Versicherung (Kraftfahrzeugversicherung) schützt den
+Versicherungsnehmer vor finanziellen Verlusten und Haftung im 
+Zusammenhang mit einem Auto.
+                """,
         covered_items=["Vehicle"],
     )
 
     occupational_disability_instance = InsurancePackage(
-        name="Berufsunfähigkeits-Versicherung",
-        price=0,  # FIXME
-        description="",  # FIXME
+        name="Berufsunfaehigkeits",
+        price=6,
+        description="""
+Leistungen:
+    - Finanzielle Leistungen bei Berufsunfähigkeit
+    - Unterstützung des Lebensunterhalts
+    - Sicherung des Einkommens
+    
+Die Berufsunfähigkeitsversicherung (BU-Versicherung) bietet finanziellen Schutz,
+wenn eine Person aufgrund von Krankheit oder Verletzung nicht mehr in der Lage ist,
+ihren Beruf auszuüben.
+            """,
         covered_items=[
             "Lebenssituation",
             "Lebenslage",
@@ -38,23 +56,50 @@ def get_all_insurance_packages() -> list[InsurancePackage]:
     )
 
     household_insurace = InsurancePackage(
-        name="Hausratsversicherung",
-        price=0,  # FIXME
-        description="",  # FIXME
+        name="Hausrats",
+        price=4,
+        description="""
+Leistungen:
+    - Entschädigung von Schäden oder Verlusten im privaten Haushalt 
+    - Schützt vor Naturkatastrophen und Feuer
+
+Die Hausratsversicherung schützt den persönlichen Besitz und die Einrichtung in einem
+Privathaushalt. Sie deckt Schäden order Verluste, die durch verschiedene versicherte
+Ereignisse verursacht werden, wie beispielsweise Diebstahl, Feuer, 
+Wasser- oder Sturmschäden.
+            """,
         covered_items=["Haustiere", "Lebenslage", "Handy", "Familienstand"],
     )
 
     abroad_travel_insure = InsurancePackage(
-        name="Auslandsreiseversicherung",
-        price=0,  # FIXME
-        description="",  # FIXME
+        name="Auslandsreise",
+        price=3,
+        description="""
+Leistungen:
+    - Behandlungskosten im Ausland
+    - notwendige Medikamente und Verbandsmaterial
+    - Krankenrücktransport
+    - Such-, Rettungs- und Bergungskosten
+
+Eine Auslandsreiseversicherung bietet Schutz, wenn Sie ins Ausland reisen.
+Sie deckt eine Reihe von unerwarteten Situationen und Notfällen, die während
+einer Reise auftreten können.
+            """,
         covered_items=["Lebenslage", "Reise"],  # TODO ADD ME
     )
 
     liability_insurance = InsurancePackage(
-        name="Haftpflichtversicherung",
-        price=0,  # FIXME
-        description="",  # FIXME
+        name="Haftpflicht",
+        price=5,
+        description="""
+Leistungen:
+    - Deckung gegen Schadenersatzansprüche Dritter
+    - Schutz vor Haftungsansprüchen
+
+Die Haftpflichtversicherung schützt den Versicherungsnehmer vor finanziellen
+Ansprüchen Dritter, die aus Verletzungen oder Schäden resultieren, für die der 
+Versicherungsnehmer rechtlich verantwortlich gemacht wird.
+            """,
         covered_items=["Lebenssituation", "Lebenslage", "Haustiere"],
     )
 

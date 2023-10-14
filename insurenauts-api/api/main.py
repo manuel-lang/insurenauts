@@ -18,6 +18,11 @@ class RecommendationResult(BaseModel):
 app = FastAPI()
 
 
+@app.get("/healthcheck")
+async def get_health():
+    return {"status": "ok"}
+
+
 @app.get("/init", description="Load initial data.")
 async def load_initial_app_data() -> None:
     return {"message": "Hello World"}

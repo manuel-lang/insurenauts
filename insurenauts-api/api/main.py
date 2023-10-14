@@ -1,18 +1,7 @@
 import uvicorn
 from fastapi import FastAPI
-from pydantic import BaseModel
-
-
-class UserAnswer(BaseModel):
-    message: str
-
-
-class GeneratedQuestion(BaseModel):
-    question: str
-
-
-class RecommendationResult(BaseModel):
-    recommendations: list[str]
+from api.models import GeneratedQuestion, UserAnswer, RecommendationResult, EmailBody
+from api.utils import send_email
 
 
 app = FastAPI()
@@ -24,18 +13,23 @@ async def get_health():
 
 
 @app.get("/init", description="Load initial data.")
-async def load_initial_app_data() -> None:
+async def load_initial_app_data_handler() -> None:
     return {"message": "Hello World"}
 
 
 @app.post("/answer", description="Process a user answer and generate next question.")
-async def process_answer(user_answer: UserAnswer) -> GeneratedQuestion:
+async def process_answer_handler(user_answer: UserAnswer) -> GeneratedQuestion:
     pass
 
 
 @app.get("/recommendations", description="Generate recommendations based on user id")
-async def generate_recommendations(user_id: int) -> RecommendationResult:
+async def generate_recommendations_handler(user_id: int) -> RecommendationResult:
     pass
+
+
+@app.post("/email")
+async def send_email_handler(body: EmailBody):
+    return send_email(body)
 
 
 def run_app():

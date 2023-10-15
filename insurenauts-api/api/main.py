@@ -7,8 +7,14 @@ from api.models import (
     EmailBody,
     InsurancePackage,
     CompletionResult,
+    Story,
 )
-from api.utils import get_all_insurance_packages, send_email, generate_email_content
+from api.utils import (
+    get_all_insurance_packages,
+    send_email,
+    generate_email_content,
+    start_story,
+)
 
 
 app = FastAPI()
@@ -53,6 +59,11 @@ async def complete_game(completion_result: CompletionResult) -> dict[str, str]:
         message=email_content,
     )
     return send_email(email_body)
+
+
+@app.get("/story", description="Get the first Story Tree.")
+async def get_story_tree() -> Story:
+    return start_story()
 
 
 def run_app():
